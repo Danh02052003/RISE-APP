@@ -1,6 +1,7 @@
 import React from 'react';
-import ArrowButton from './ArrowButton'; // Adjust the path as needed
-import ChallengeCategories from './ChallengeCategories'; // Adjust the path as needed
+import ArrowButton from './ArrowButton'; 
+import ChallengeCategories from '../components/ChallengesCategories';
+import '../styles/ChallengesCard.css'
 
 const ChallengeCard = ({ challenge }) => {
   return (

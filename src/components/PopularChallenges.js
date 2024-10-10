@@ -1,12 +1,13 @@
 import React from 'react';
-import { ArrowRight, Star } from 'lucide-react';
 import '../styles/PopularChallenges.css'
+import ChallengeCard from './ChallengesCard';
 
 const challenges = [
   {
     id: 1,
     title: "STEM Explorer - A Journey of Sci...",
     participants: 522,
+    typeOfEvent: "Challenge Event",
     days: 4,
     date: "21 DEC",
     time: "12:00 AM",
@@ -72,61 +73,48 @@ const challenges = [
 ];
   
 const activities = [
-    `${process.env.PUBLIC_URL}/images/Events/stem.png`,
-    `${process.env.PUBLIC_URL}/images/Events/festival.png`,
-    `${process.env.PUBLIC_URL}/images/Events/logo.svg`,
-    `${process.env.PUBLIC_URL}/images/Events/logo.svg`,
+  `${process.env.PUBLIC_URL}/images/activities/paint.png`,
+    `${process.env.PUBLIC_URL}/images/activities/garden.png`,
+    `${process.env.PUBLIC_URL}/images/activities/hiking.png`,
+    `${process.env.PUBLIC_URL}/images/activities/robot.png`,
 ];
   
 const PopularChallenges = () => {
+  document.addEventListener('DOMContentLoaded', function() {
+    const activities = document.querySelector('.activities');
+    let hasAnimated = false;
+
+    activities.addEventListener('mouseenter', function() {
+        if (!hasAnimated) {
+            hasAnimated = true;
+            this.classList.add('animate');
+        }
+    });
+});
     return (
       <div className="popular-challenges">
         <img className='text-star' src={`${process.env.PUBLIC_URL}/images/popularchallenge.svg`} alt='group text star' />
         <div className="challenge-grid">
-          {challenges.map(challenge => (
-            <div key={challenge.id} className="challenge-card">
-              <div className="challenge-date">
-                  <span className="day">{challenge.date.split(' ')[0]}</span><br/>
-                  <span className="month">{challenge.date.split(' ')[1]}</span>
-                </div>
-              <img src={challenge.src} alt={challenge.title} className="challenge-image" />
-              <div className="challenge-details">
-                <div className="challenge-header">
-                  <span className="challenge-title">{challenge.title}</span>
-                </div>
-                <div className='container-challenges'>
-                  <div className="challenge-categories">
-                    {challenge.category.map((event, index) => (
-                      <span key={index} className="category">{event}</span>
-                    ))}
-                  </div>
-                  <button class="arrow-button"><img src={`${process.env.PUBLIC_URL}/images/icon/arrow.svg`}/></button>
-                  <div className="challenge-info">
-                    <div className='info'>
-                      <img src={`${process.env.PUBLIC_URL}/images/icon/clock.svg`} alt="Clock Icon" className="icon-info icon-clock" />
-                      <span className="challenge-time">{challenge.time}</span>
-                    </div>
-                    <div className='info'>
-                      <img src={`${process.env.PUBLIC_URL}/images/icon/location.svg`} alt="Location Icon" className="icon-info icon-location" />
-                      <span className="challenge-location">{challenge.location}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            ))}
+        {challenges.map(challenge => (
+          <ChallengeCard key={challenge.id} challenge={challenge} />
+        ))}
         </div>
 
         <button className="see-all-button">See all <img className='arrow' src={`${process.env.PUBLIC_URL}/images/icon/arrow.svg`}/></button>
         
+        
 
         <div className='activities'>
-          <h2>FUN ACTIVITIES <br/> WITH US.</h2>
-          <div className="activity-grid">
-            <img src={`${process.env.PUBLIC_URL}/images/activities/paint.png`} alt="Paint activity" className="activity-image top-left" />
-            <img src={`${process.env.PUBLIC_URL}/images/activities/garden.png`} alt="Gardening activity" className="activity-image top-right" />
-            <img src={`${process.env.PUBLIC_URL}/images/activities/hiking.png`} alt="Hiking activity" className="activity-image bottom-left" />
-            <img src={`${process.env.PUBLIC_URL}/images/activities/robot.png`} alt="Robot activity" className="activity-image bottom-right" />
+      <h2>FUN ACTIVITIES <br/> WITH US.</h2>
+      <div className="activity-grid">
+        {activities.map((src, index) => (
+            <img 
+                key={index} 
+                src={src} 
+                alt={`Activity ${index + 1}`} 
+                className={`activity-image ${['top-left', 'top-right', 'bottom-left', 'bottom-right'][index]}`} 
+            />
+            ))}
           </div>
           <div className="instagram-icon">
             <img src={`${process.env.PUBLIC_URL}/images/icon/instagram.svg`} alt="Instagram" />
@@ -189,4 +177,5 @@ const PopularChallenges = () => {
     );
   };
 
+ 
   export default PopularChallenges;

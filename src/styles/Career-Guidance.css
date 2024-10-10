@@ -1,345 +1,344 @@
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    background-color: #F3FDB0;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  header {
+    padding: 25px 95px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    top: 290px;
+    left: 95px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 101.65px;
+    height: 120px;    
+    gap: 0px;
+    opacity: 0px;
+
+  }
+  
+  .auth-button {
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .login-button {
+    background-color: #fdfdfd;
+    color: #304FC9;
+    border: none;
+    margin-right: 0.5rem;
+  }
+  
+  .signup-button {
+    background-color: #FF6600;
+    color: white;
+    border: 1px solid #304FC9;
+    border-bottom: 3px solid #304FC9;
+    transition: all 0.1s ease;
+    position: relative;
+    top: 0;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .signup-button:hover {
+    background-color: #FF7720;
+  }
+  
+  .signup-button:active {
+    top: 2px;
+    border-bottom: 1px solid #304FC9;
+  }
+
+  main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 0px;
+    text-align: center;
+  }
+  
+  .center {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .center h2 {
+    text-align: center;
+    font-size: 72px;
+    margin: 0;
+  }
+
+  .description {    
+    text-align: center;
+    font-size: 24px;
+    margin: 16px 0 ;
+  }
+
+  
+  .explore-button {
+    position: absolute;
+    z-index: 3;
+    width: 289px;
+    height: 85px;
+    margin-top: 32px;
+    font-size: 28px;
+    background-color: #FF6600;
+    color: white;
+    border-radius: 40px;
+    border: none;
+    border-bottom: 6px solid #304FC9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.1s ease;
+  }
+  
+  .explore-button:hover {
+    background-color: #FF7720;
+  }
+  
+  .explore-button:active {
+    border-bottom: 0px solid #304FC9;
+  }
+  
+  .explore-button img {
+    margin-left: 16px;
+  }
+  .main-container{
+    overflow: hidden;
+    width: 100%;
+  }
+  .gear-box {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-bottom: 118px;
+  }
+  
+  .gear-box .boy,
+  .gear-box .girl {
+    position: absolute;
+    z-index: 2;
+    transition: transform 0.5s ease-out;
+  }
+  
+  .gear-box .boy {
+    width: 231.16px;
+    height: 572.8px;
+    left: 0%; 
+    bottom: 20px;
+    transform: translateX(-100%);
+    z-index: 0;
+  }
+  
+  .gear-box .girl {
+    width: 337.86px;
+    height: 585.61px;
+    right: 0%; 
+    bottom: 20px;
+    transform: translateX(100%);
+    z-index: 0;
+  }
+  
+  .gear-box.animated .boy {
+    transform: translateX(100%);
+  }
+  
+  .gear-box.animated .girl {
+    transform: translateX(-40%);
+  }
+  
+  .gear-box .tube {
+    width: 100%; 
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  .explore-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+  }
+
+  .grey-circle {
+    position: relative;
+    width: 100%;
+    height: 50vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D7DCFC;
+    border-radius: 100% 100% 0 0; 
+    overflow: hidden;
+    margin: 0;
 }
 
-.container {
-  background-color: #F3FDB0;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
 
-header {
-  padding: 25px 95px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+  .something-cool{
+    position: absolute;
+  }
 
-.logo {
-  top: 290px;
-  left: 95px;
-  display: flex;
-  align-items: center;
-}
+  .name-area{
+    width: 410px;
+    height: 107px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 32px;
+    background: var(--Blue, #304FC9);
+  }
 
-.logo img {
-  width: 101.65px;
-  height: 120px;    
-  gap: 0px;
-  opacity: 0px;
+  .white-area{
+    width: 410px;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 32px;
+    background: var(--White, #FFF);
+  }
 
-}
+  .white-area img{
+    width: 232px;
+    height: 232px;
+  }
 
-.auth-button {
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+  .text-star{
+    margin-top: 0px;
+  }
+  .hello-dog {
+    margin-bottom: -350px;
+    display: block;
+    width: 500px;
+    height: 600px;
+  }
 
-.login-button {
-  background-color: #fdfdfd;
-  color: #304FC9;
-  border: none;
-  margin-right: 0.5rem;
-}
+  /* footer */
+  * {
+    box-sizing: border-box;
+  }
+  
+  footer {
+    background-color: #304FC9;
+    color: white;
+    display: flex;
+  }
 
-.signup-button {
-  background-color: #FF6600;
-  color: white;
-  border: 1px solid #304FC9;
-  border-bottom: 3px solid #304FC9;
-  transition: all 0.1s ease;
-  position: relative;
-  top: 0;
-  padding: 10px 20px;
-  cursor: pointer;
-}
+  .blue-area{
+    margin: 0px
+  }
+  .blue-area h3{
+    font-size: 64px;
+    margin-left: 96px;
+    margin-top: 55px;
+    margin-bottom: 0px;
+  }
 
-.signup-button:hover {
-  background-color: #FF7720;
-}
+  .description-app{
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 42.56px;
+    margin-left: 96px;
+    margin-top: 13px;
+    margin-bottom: 98px;
+    width: 667px;
+  }
+ 
+  .app-buttons {
+    margin-left: 96px;
+    display: flex;
+  }
+  
+  .app-button {
+    width: 291.8px;
+    height: 104.21px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 11.98px;
+    display: flex;
+    padding: 0 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 31.98px;
+  }
+  
+  .app-button:hover {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .app-button img {
+    width: 43.12px;
+    height: 53.31px;
+    margin-top: 23.96px;
+    margin-left: 32.94px;
+  }
+  
+  .app-button .button-text {
+    margin-top: 26.35px;
+    margin-left: 16.77px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--black, #1A2035);
+  }
+  
+  .app-button .button-text span:first-child {
+    font-size: 16.77px;
+    font-weight: 500;
+    line-height: 20.01px;
+    text-align: left;
 
-.signup-button:active {
-  top: 2px;
-  border-bottom: 1px solid #304FC9;
-}
+  }
+  
+  .app-button .button-text span:last-child {
+    font-size: 29.95px;
+    font-weight: 500;
+    line-height: 35.74px;
+    text-align: left;
+    font-style: bold;
+  }
 
-main {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 0px;
-  text-align: center;
-}
-
-.center {
-  width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.center h2 {
-  text-align: center;
-  font-size: 72px;
-  margin: 0;
-}
-
-.description {    
-  text-align: center;
-  font-size: 24px;
-  margin: 16px 0 ;
-}
-
-
-.explore-button {
-  position: absolute;
-  z-index: 3;
-  width: 289px;
-  height: 85px;
-  margin-top: 32px;
-  font-size: 28px;
-  background-color: #FF6600;
-  color: white;
-  border-radius: 40px;
-  border: none;
-  border-bottom: 6px solid #304FC9;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: all 0.1s ease;
-}
-
-.explore-button:hover {
-  background-color: #FF7720;
-}
-
-.explore-button:active {
-  border-bottom: 1px solid #304FC9;
-}
-
-.explore-button img {
-  margin-left: 16px;
-}
-.main-container{
-  overflow: hidden;
-  width: 100%;
-}
-.gear-box {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  margin-bottom: 118px;
-}
-
-.gear-box .boy,
-.gear-box .girl {
-  position: absolute;
-  z-index: 2;
-  transition: transform 0.5s ease-out;
-}
-
-.gear-box .boy {
-  width: 231.16px;
-  height: 572.8px;
-  left: 0%; 
-  bottom: 20px;
-  transform: translateX(-100%);
-  z-index: 0;
-}
-
-.gear-box .girl {
-  width: 337.86px;
-  height: 585.61px;
-  right: 0%; 
-  bottom: 20px;
-  transform: translateX(100%);
-  z-index: 0;
-}
-
-.gear-box.animated .boy {
-  transform: translateX(100%);
-}
-
-.gear-box.animated .girl {
-  transform: translateX(-40%);
-}
-
-.gear-box .tube {
-  width: 100%; 
-  position: absolute;
-  bottom: 0;
-  z-index: 1;
-}
-
-.explore-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 3;
-}
-
-.grey-circle {
-  position: relative;
-  width: 100%;
-  height: 50vh; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #D7DCFC;
-  border-radius: 100% 100% 0 0; 
-  overflow: hidden;
-  margin: 0;
-}
-
-
-.something-cool{
-  position: absolute;
-}
-
-.name-area{
-  width: 410px;
-  height: 107px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  align-self: stretch;
-  border-radius: 32px;
-  background: var(--Blue, #304FC9);
-}
-
-.white-area{
-  width: 410px;
-  height: 380px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  align-self: stretch;
-  border-radius: 32px;
-  background: var(--White, #FFF);
-}
-
-.white-area img{
-  width: 232px;
-  height: 232px;
-}
-
-.text-star{
-  margin-top: 0px;
-}
-.hello-dog {
-  margin-bottom: -350px;
-  display: block;
-  width: 500px;
-  height: 600px;
-}
-
-/* footer */
-* {
-  box-sizing: border-box;
-}
-
-footer {
-  background-color: #304FC9;
-  color: white;
-  display: flex;
-}
-
-.blue-area{
-  margin: 0px
-}
-.blue-area h3{
-  font-size: 64px;
-  margin-left: 96px;
-  margin-top: 55px;
-  margin-bottom: 0px;
-}
-
-.description-app{
-  font-size: 32px;
-  font-weight: 400;
-  line-height: 42.56px;
-  margin-left: 96px;
-  margin-top: 13px;
-  margin-bottom: 98px;
-  width: 667px;
-}
-
-.app-buttons {
-  margin-left: 96px;
-  display: flex;
-}
-
-.app-button {
-  width: 291.8px;
-  height: 104.21px;
-  background-color: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 11.98px;
-  display: flex;
-  padding: 0 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-right: 31.98px;
-}
-
-.app-button:hover {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.app-button img {
-  width: 43.12px;
-  height: 53.31px;
-  margin-top: 23.96px;
-  margin-left: 32.94px;
-}
-
-.app-button .button-text {
-  margin-top: 26.35px;
-  margin-left: 16.77px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  color: var(--black, #1A2035);
-  font-family: SF Pro Display;
-}
-
-.app-button .button-text span:first-child {
-  font-size: 16.77px;
-  font-weight: 500;
-  line-height: 20.01px;
-  text-align: left;
-
-}
-
-.app-button .button-text span:last-child {
-  font-size: 29.95px;
-  font-weight: 500;
-  line-height: 35.74px;
-  text-align: left;
-  font-style: bold;
-}
-
-.iphone-app{
-  height: fit-content;
-  margin-left: auto;
-  margin-right: 96px;
-  margin-top: 132px;
-}
+  .iphone-app{
+    height: fit-content;
+    margin-left: auto;
+    margin-right: 96px;
+    margin-top: 132px;
+  }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import '../styles/orange-button.css'
 const Button = ({ className, onClick, children }) => {
   return (
     <button className={`auth-button ${className}`} onClick={onClick}>
