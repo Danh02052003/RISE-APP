@@ -1,12 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Button from './orange-button';
 import '../styles/Career-Guidance.css';
+import { Link } from 'react-router-dom';
+
+
 
 const Header = () => {
   return (
     <header>
       <div className="logo">
-        <img src={`${process.env.PUBLIC_URL}/images/logo.svg`} alt="Logo" />
+        <img src={`${process.env.PUBLIC_URL}/images/logo/logo.svg`} alt="Logo" />
       </div>
       <div>
         <Button className="login-button">Log In</Button>
@@ -43,10 +46,12 @@ const Main = () => {
         </p>
       </div>
 
-      <Button className="explore-button">
-        Explore now 
-        <img src={`${process.env.PUBLIC_URL}/images/icon/arrow-right.svg`} alt="arrow" />
-      </Button>
+      <Link to="/dash-board">
+        <Button className="explore-button">
+          Explore now 
+          <img src={`${process.env.PUBLIC_URL}/images/icon/arrow-right.svg`} alt="arrow" />
+        </Button>
+      </Link>
       
       <div className={`gear-box ${animated ? 'animated' : ''}`}>
         <img 

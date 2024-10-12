@@ -1,0 +1,28 @@
+.search-container {
+    position: relative;
+  }
+  
+  .search-container img {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    transform: translateY(-50%);
+    color: #9ca3af;    
+  }
+  
+  .search-input {
+    width: 807px;
+    height: 44px;
+    padding: 10px 10px 10px 62px;
+    font-size: 16px;
+    border-radius: 40px;
+    border: none;
+    background-color: #FBFBFD;
+    box-shadow: 0px 0px 8px 0px #0000001A;
+  }
+
+  .search-input:focus{
+    border: none;
+  }

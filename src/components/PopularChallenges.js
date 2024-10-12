@@ -100,7 +100,7 @@ const PopularChallenges = () => {
         ))}
         </div>
 
-        <button className="see-all-button">See all <img className='arrow' src={`${process.env.PUBLIC_URL}/images/icon/arrow.svg`}/></button>
+        <button className="see-all-button">See all <img className='arrow' src={`${process.env.PUBLIC_URL}/images/icon/arrow.svg`} alt='arrow'/></button>
         
         
 
