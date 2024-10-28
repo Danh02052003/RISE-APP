@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import '../styles/Calendar.css'
+import '../styles/Calendar.css';
 
-const Calendar = () => {
-  const currentDate = new Date();
+const Calendar = ({ events }) => {
+  const [currentDate, setCurrentDate] = useState(new Date());
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   const getStartOfWeek = (date) => {
@@ -16,37 +16,41 @@ const Calendar = () => {
 
   const renderCalendarDays = () => {
     const days = [];
-
     for (let i = 0; i < 7; i++) {
       const day = new Date(startOfWeek);
       day.setDate(startOfWeek.getDate() + i);
-
       const isCurrentDay = day.toDateString() === currentDate.toDateString();
-      const hasEvent = [6, 7, 9, 10, 12].includes(day.getDate());
-      const hasSecondEvent = day.getDate() === 10;
+      const eventsForDay = events.filter(event => new Date(event.date).toDateString() === day.toDateString());
 
       days.push(
-        <div key={i} className={`calendar-day day  ${isCurrentDay ? 'current' : ''}`}>
-          {day.getDate()}
-          {hasEvent && <div className="event-dot orange"></div>}
-          {hasSecondEvent && <div className="event-dot green"></div>}
+        <div key={day.toDateString()} className={`calendar-day ${isCurrentDay ? 'current' : ''}`}>
+          <span>{day.getDate()}</span>
+          <div className="dots-container">
+            {eventsForDay.map(event => (
+              <div key={event.id} className={`event-dot ${event.typeOfEvent.toLowerCase().includes('event') ? 'orange' : 'green'}`}></div>
+            ))}
+          </div>
         </div>
       );
     }
-
     return days;
   };
+
+  useEffect(() => {
+    document.getElementById('calendar-month-year').textContent =
+      currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+  }, [currentDate]);
 
   return (
     <div className="calendar">
       <div className="calendar-header">
         <h3>
-          <img src={`${process.env.PUBLIC_URL}/images/icon/Dash-Board/calendar.svg`} alt="Calendar Icon"/>
+          <img src={`${process.env.PUBLIC_URL}/images/icon/Dash-Board/calendar.svg`} alt="Calendar Icon" />
           {currentDate.toLocaleString('default', { month: 'long', year: 'numeric' })}
         </h3>
         <div className="calendar-nav">
-          <button><ChevronLeft /></button>
-          <button><ChevronRight /></button>
+          <button onClick={() => setCurrentDate(new Date(currentDate.setMonth(currentDate.getMonth() - 1)))}><ChevronLeft /></button>
+          <button onClick={() => setCurrentDate(new Date(currentDate.setMonth(currentDate.getMonth() + 1)))}><ChevronRight /></button>
         </div>
       </div>
       <div className="calendar-grid">
