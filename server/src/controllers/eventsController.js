@@ -165,10 +165,43 @@ const updateEvent = async (req, res) => {
     }
 };
 
+// Get all events with search functionality by title, date, or category
+const findEvents = async (req, res) => {
+    try {
+        const { title, startDate, endDate, category } = req.query;
+
+        let query = {};
+
+        // Searching by title 
+        if (title) {
+            query.title = { $regex: title, $options: 'i' };
+        }
+
+        // Date range search 
+        if (startDate || endDate) {
+            query.date = {};
+            if (startDate) query.date.$gte = new Date(startDate);
+        }
+
+        // Category search
+        if (category) {
+            const categoryArray = Array.isArray(category) ? category : category.split(',');
+            query.category = { $all: categoryArray }; // Ensure both categories are present
+        }
+
+        // Execute the query
+        const events = await Event.find(query);
+        res.json({ events });
+    } catch (error) {
+        res.status(500).json({ msg: 'Error fetching events', error: error.message });
+    }
+};
+
 module.exports = {
     getAllEvents,
     getEventByEventId,
     createEvents,
     deleteEvent,
-    updateEvent
+    updateEvent,
+    findEvents
 };

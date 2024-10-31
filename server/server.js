@@ -1,9 +1,10 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
+
 const eventRoutes = require('./src/routes/events');
 const app = express();
-const PORT = 5000;
+const PORT = 3000;
 const MONGO_URI='mongodb+srv://danhnguyen02052003:soliknokia123@event.exycr.mongodb.net/eventDB'
 
 // middleware

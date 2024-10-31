@@ -1,12 +1,11 @@
-// routes/events.js
 const express = require('express');
 const { 
     getAllEvents, 
-    // getEventById, 
+    getEventByEventId, 
     createEvents, 
     deleteEvent, 
     updateEvent,
-//    findEvents
+    findEvents  // Import the new search function
 } = require('../controllers/eventsController');
 
 const router = express.Router();
@@ -14,11 +13,11 @@ const router = express.Router();
 // Get all events with search functionality
 router.get('/', getAllEvents);
 
-// Search events by any field
-//router.get('/search', findEvents);
+// Search events by title, date, or category
+router.get('/search', findEvents);
 
 // Other routes remain the same
-//router.get('/:id', getEventById);
+router.get('/:id', getEventByEventId);
 router.post('/', createEvents);
 router.delete('/:id', deleteEvent);
 router.patch('/:id', updateEvent);
