@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ArrowButton from './ArrowButton'; 
-import ChallengeCategories from '../components/ChallengesCategories';
-import '../styles/ChallengesCard.css'
+import ChallengeCategories from './ChallengesCategories';
+import '../styles/ChallengesCard.css';
 
-const ChallengeCard = ({ event }) => {
+const ChallengeCard = ({ event }) => { // Accept single event instead of events array
+  const [loading, setLoading] = useState(true);
+  const [error] = useState(null);
 
-  // Hàm định dạng ngày
+  useEffect(() => {
+    if (event) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  }, [event]);
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = String(date.getDate()).padStart(2, '0'); 
@@ -13,7 +22,6 @@ const ChallengeCard = ({ event }) => {
     return { day, month };
   };
   
-  // Hàm định dạng giờ
   const formatTime = (dateString) => {
     const date = new Date(dateString);
     let hours = date.getUTCHours();
@@ -34,11 +42,18 @@ const ChallengeCard = ({ event }) => {
     
     return `${hours}:${mins} ${period}`;
   };
-  
+
+  if (loading) {
+    return <div>Loading event...</div>; // Adjust loading message
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   const { day, month } = formatDate(event.date);
   const time = formatTime(event.date);
 
-  
   return (
     <div className="challenge-card">
       <div className="challenge-date">
@@ -66,9 +81,7 @@ const ChallengeCard = ({ event }) => {
                 alt="Clock Icon" 
                 className="icon-info icon-clock" 
               />
-              <span className="challenge-time">
-                {time}
-              </span>
+              <span className="challenge-time">{time}</span>
             </div>
             <div className="info">
               <img 
