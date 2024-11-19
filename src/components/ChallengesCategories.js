@@ -1,15 +1,13 @@
 import React from 'react';
 
-const ChallengeCategories = ({ categories, typeOfEvent }) => {
-  const borderColor = typeOfEvent === "Challenge Event" ? '#747474' : '#304FC9';
+const ChallengeCategories = ({ categories }) => {
 
   return (
     <div className="challenge-categories">
       {categories.map((event, index) => (
         <span
           key={index}
-          className="category"
-          style={{ borderColor }}
+          className="category status"
         >
           {event}
         </span>

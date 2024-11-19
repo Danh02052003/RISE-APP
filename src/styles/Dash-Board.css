@@ -1,94 +1,52 @@
-.dashboard {
+  .dashboard {
+    display: flex;
+    height: 100vh;
+    background-color: hsl(231, 28%, 95%);
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between search and user actions */
+    padding: 10px; /* Adjust padding as needed */
+}
+
+  /* header*/
+  .user-actions {
+    display: flex;
+    align-items: center;
+    margin-left: 107px;
+    margin-top: 15px;
+}
+
+.button-actions-user {
   display: flex;
-  height: 100vh;
-  background-color: #EFF0F6;
+  gap: 12px;
 }
 
-.sidebar {
-  width: 268.52px;
-  height: 918px;
-  padding: 24px 12px;
-  border-radius: 24px;
-  background-color: #FBFBFD;
-  margin: 40px 0 0 24px;
-  display: flex;
-  flex-direction: column;
-}
+  .button-actions-user img{
+    width: 32px;
+    height: 32px;
+  }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-}
+  .button-actions-user button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    gap: 16px;
+    border-radius: 40px;
+    background: var(--White, #FBFBFD);
+    border: none;    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-.logo img {
-  width: 48px;
-  height: 57px;
-}
-
-.nav-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.nav-item {
-  width: 244.52px;
-  height: 56px;
-  padding: 12px 24px;
-  border-radius: 12px;
-  background: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 31.92px;
-  color: #304FC9;
-  transition: all 0.3s ease;
-}
-
-.nav-item:focus, .nav-item.active {
-  height: 68px;
-  padding: 16px 24px;
-  font-weight: 600;
-  background-color: #F3FDB0;
-}
-
-.nav-icon {
-  width: 32px;
-  height: 32px;
-  margin-right: 16px;
-}
-
-.nav-item:focus .nav-icon, .nav-item.active .nav-icon {
-  width: 36px;
-  height: 36px;
-}
-
-.settings {
-  margin-top: 257px;
-}
 
   /* main */
   .main-content {
     padding: 0px;
-
-  }
-  
-  .header {
-    display: flex;
-    margin-left: -25%;
-    margin-top: 150px;
-    padding: 0px;
+    margin: 0px;
   }
 
-  .user-actions {
-    display: flex;
-    align-items: center;
-  }
-  
   .notification-btn {
     justify-items: center;
     border: none;
@@ -107,113 +65,3 @@
     width: 32px;
     height: 32px;
   }
-
-  .avatar {
-    width: 64px;
-    height: 64px;
-    background-color: #e5e7eb;
-    border-radius: 50%;
-  }
-
-.welcome-section {
-  display: flex;
-  margin-left: -66%;
-  align-items: center;
-  margin-bottom: 40px;
-}
-
-.welcome-section h1 {
-  font-size: 36px;
-  font-weight: bold;
-  margin-right: 20px;
-}
-
-.schedule-section {
-  margin-bottom: 40px;
-}
-
-.section-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.section-header h2 {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.view-more-btn {
-  background: none;
-  border: none;
-  color: #304FC9;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.schedule-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.challenge-section {
-  background-color: #F3FDB0;
-  padding: 24px;
-  border-radius: 16px;
-}
-
-.challenge-section h2 {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-.challenge-section h3 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 16px;
-}
-
-.progress-bar {
-  height: 8px;
-  background-color: #E0E0E0;
-  border-radius: 4px;
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.progress {
-  height: 100%;
-  background-color: #FF7D33;
-}
-
-.challenge-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.challenge-stats {
-  display: flex;
-  gap: 16px;
-}
-
-.time-left, .points {
-  background-color: #FFFFFF;
-  padding: 8px 16px;
-  border-radius: 40px;
-  font-size: 14px;
-}
-
-.keep-going-btn {
-  background-color: #FF7D33;
-  color: #FFFFFF;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 40px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}

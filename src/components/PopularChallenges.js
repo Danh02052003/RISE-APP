@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ChallengeCard from './ChallengeCard';
+import { Link } from 'react-router-dom';
+import '../styles/PopularChallenges.css';
 
 const PopularChallenges = () => {
   const [events, setEvents] = useState([]);
@@ -36,9 +38,9 @@ const PopularChallenges = () => {
 
   // Get the six newest events
   const getNewestEvents = () => {
-    console.log("Events before sorting:", events); // Debugging: log events before sorting
+    // console.log("Events before sorting:", events);
     const sortedEvents = events.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 6);
-    console.log("Sorted events:", sortedEvents); // Debugging: log sorted events
+    // console.log("Sorted events:", sortedEvents); 
     return sortedEvents;
   };
 
@@ -65,7 +67,7 @@ const PopularChallenges = () => {
       }
     };
     fetchActivities();
-  }, []);
+  }, [error]);
 
   const { activities, loading: activitiesLoading, error: activitiesError } = activitiesState;
 
@@ -82,22 +84,23 @@ const PopularChallenges = () => {
           <div>Loading events...</div>
         ) : getNewestEvents().length > 0 ? (
           getNewestEvents().map((event) => (
-            <ChallengeCard key={event._id} event={event} /> 
+            <ChallengeCard event={event} />
           ))
         ) : (
           <div className="no-events">No events available at this time</div>
         )}
       </div>
 
-      <button className="see-all-button">
-        See all
-        <img
-          className="arrow"
-          src={`${process.env.PUBLIC_URL}/images/icon/arrow.svg`}
-          alt="arrow"
-        />
-      </button>
-
+      <Link to="/dash-board">
+          <button className="see-all-button">
+          See all
+          <img
+            className="arrow"
+            src={`${process.env.PUBLIC_URL}/images/icon/arrow.svg`}
+            alt="arrow"
+          />
+        </button>
+      </Link>
       <div className="activities">
         <h2>FUN ACTIVITIES <br/> WITH US.</h2>
         

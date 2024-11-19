@@ -1,0 +1,67 @@
+
+.challenge-section {
+    background-color: #F3FDB0;
+    padding: 24px;
+    border-radius: 16px;
+    width: 1079px;
+    height: 236px;
+    padding: 24px;
+    gap: 24px;
+    border-radius: 24px;
+    opacity: 0px;
+
+  }
+  
+  .challenge-section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .challenge-section h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .progress-bar {
+    height: 8px;
+    background-color: #E0E0E0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  
+  .progress {
+    height: 100%;
+    background-color: #FF7D33;
+  }
+  
+  .challenge-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .challenge-stats {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .time-left, .points {
+    background-color: #FFFFFF;
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+  }
+  
+  .keep-going-btn {
+    background-color: #FF7D33;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }

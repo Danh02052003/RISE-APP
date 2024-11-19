@@ -8,6 +8,90 @@ function generateEventId() {
     return `EVENT-${year}-${randomNum}`;
 }
 
+const addressSchema = new Schema({
+    street: {
+        type: String,
+        required: true
+    },
+    ward: {
+        type: String,
+        required: true
+    },
+    district: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    coordinates: {
+        latitude: Number,
+        longitude: Number
+    }
+});
+
+const organizerSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    logo: {
+        type: String,
+        required: true
+    },
+    followers: {
+        type: Number,
+        default: 0
+    },
+    attendeesHosted: {
+        type: Number,
+        default: 0
+    },
+    socialMedia: {
+        facebook: String,
+        instagram: String,
+        linkedin: String
+    }
+});
+
+const skillSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    icon: {
+        type: String
+    }
+});
+
+const pricingSchema = new Schema({
+    basePrice: {
+        type: Number,
+        required: true
+    },
+    currency: {
+        type: String,
+        default: 'd'  // Vietnamese dong
+    },
+    discount: {
+        amount: Number,
+        type: {
+            type: String,
+            enum: ['percentage', 'fixed']
+        },
+        validUntil: Date
+    },
+    finalPrice: {
+        type: Number,
+        required: true
+    }
+});
+
 const eventSchema = new Schema({
     eventId: {
         type: String,
@@ -21,38 +105,81 @@ const eventSchema = new Schema({
         required: true,
         index: true
     },
-    participants: {
-        type: Number,
-        required: true,
-        index: true
+    description: {
+        type: String,
+        required: true
     },
-    typeOfEvent: {
+    registrations: {
+        current: {
+            type: Number,
+            default: 0
+        },
+        limit: {
+            type: Number
+        }
+    },
+    organizer: {
+        type: organizerSchema,
+        required: true
+    },
+    pricing: {
+        type: pricingSchema,
+        required: true
+    },
+    categories: [{
         type: String,
         required: true,
-        index: true
-    },
-    lasts: {
-        type: Number,
-        required: true,
-        index: true
-    },
-    date: {
-        type: Date,
-        required: true,
-        index: true
+    }],
+    schedule: {
+        date: {
+            type: Date,
+            required: true
+        },
+        startTime: {
+            type: String,
+            required: true
+        },
+        endTime: {
+            type: String,
+            required: true
+        },
+        timezone: {
+            type: String,
+            default: 'CST'
+        }
     },
     location: {
-        type: String,
-        required: true,
-        index: true
+        name: {
+            type: String,
+            required: true
+        },
+        address: {
+            type: addressSchema,
+            required: true
+        }
     },
-    category: {
+    skills: {
+        type: [skillSchema],
+        default: []
+    },
+    refundPolicy: {
+        type: String,
+        default: 'No policy'
+    },
+    images: [{
         type: [String],
-        required: true,
-        index: true
-    },
-    src: {
+        required: true
+    }],
+    tags: [{
         type: String,
+        index: true
+    }],
+    status: {
+        type: String,
+        default: 'Just Added'
+    },
+    ticketSalesEnd: {
+        type: Date,
         required: true
     }
 }, {
@@ -63,9 +190,11 @@ const eventSchema = new Schema({
 eventSchema.index({
     eventId: 'text',
     title: 'text',
-    typeOfEvent: 'text',
-    location: 'text',
-    category: 'text'
+    description: 'text',
+    'location.name': 'text',
+    'location.address.street': 'text',
+    tags: 'text',
+    categories: 'text'
 });
 
 eventSchema.pre('save', async function(next) {
@@ -73,7 +202,6 @@ eventSchema.pre('save', async function(next) {
         let isUnique = false;
         let attempts = 0;
         
-        // Try up to 5 times to generate a unique ID
         while (!isUnique && attempts < 5) {
             const eventId = generateEventId();
             const existingEvent = await mongoose.models.Event.findOne({ eventId });

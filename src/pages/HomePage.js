@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
 import '../styles/Career-Guidance.css';
-import '../styles/PopularChallenges.css';
 import Header from '../components/HeaderCGL';
 import Main from '../components/MainCGL';
 import Footer from '../components/FooterCGL';

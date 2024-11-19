@@ -1,28 +1,85 @@
 .search-container {
-    position: relative;
-  }
-  
-  .search-container img {
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    transform: translateY(-50%);
-    color: #9ca3af;    
-  }
-  
-  .search-input {
-    width: 807px;
-    height: 44px;
-    padding: 10px 10px 10px 62px;
-    font-size: 16px;
-    border-radius: 40px;
-    border: none;
-    background-color: #FBFBFD;
-    box-shadow: 0px 0px 8px 0px #0000001A;
-  }
+  display: flex;
+  width: 750px;
+  padding: 8px;
+  justify-content: space-between;
+  border-radius: 40px;
+  background: var(--White, #FBFBFD);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-top: 24px;
+  margin-left: 51.48px;
+}
 
-  .search-input:focus{
-    border: none;
-  }
+.search-activity {
+  width: 420px;
+  height: 48px;
+  border-right: 1px solid #E5E7EB;
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 8px;
+  margin-left: 8px;
+}
+
+.search-location {
+  display: flex;
+  width: 300px;
+  height: 48px;
+  align-items: center;
+  padding: 0 8px;
+  margin-left: 8px;
+  position: relative;
+}
+
+.background-img {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #EFF0F6;
+  border-radius: 40px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.search-img,
+.location-img {
+  width: 24px;
+  height: 24px;
+}
+
+.search-input {
+  flex: 1;
+  height: 100%;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #1C1C1C;
+  padding: 0 8px;
+}
+
+.search-input::placeholder {
+  color: #6B7280;
+}
+
+.search-location-img {
+  position: absolute;
+  right: 8px;
+  background: #FF7D33;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.search-location-img img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* Makes the icon white */
+}

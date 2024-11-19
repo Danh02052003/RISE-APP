@@ -1,5 +1,10 @@
 .calendar {
     background-color: #FFFFFF;
+    width: 527px;
+    height: 272px;
+    gap: 32px;
+    border-radius: 24px 0px 0px 0px;
+    opacity: 0px;
     border-radius: 16px;
     box-shadow: 0px 4px 20px 0px #0000000A;
     padding-top: 0px;
@@ -88,21 +93,22 @@
   
   .event-dot {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
   }
   
-  .event-dot.orange {
-    background-color: #F3FDB0;
+  .orange {
+    background-color: #FFC127;
     left: 50%;
-    bottom: -12px;
     transform: translateX(-50%);
   }
   
-  .event-dot.green {
-    background-color: #D7DCFC;
+  .green {
+    background-color: #C0F597;
     left: 50%;
-    bottom: -24px;
     transform: translateX(-50%);
+    margin-top: 20px;
   } 
+  
+  

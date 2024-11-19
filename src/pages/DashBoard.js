@@ -1,29 +1,59 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Dash-Board.css';
-import Point from '../components/Point.js';
 import AsideMenu from '../components/AsideMenu.js';
-import Search from '../components/Search.js';
-import Calendar from '../components/Calendar.js';
-import Schedule from '../components/TodaySchedule.js';
-import ChallengeSection from '../components/ChallengeSection.js';
-
+import HeaderDB from '../components/HeaderDB.js';
+import SlideImage from '../components/SlideImage.js';
+import FilterBar from '../components/FilterBar.js';
 function Dashboard() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Helper function to format the date and time
+  const formatDateTime = (date, time) => {
+    const eventDate = new Date(date);
+    const formattedDate = eventDate.toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    });
+
+    // Convert time to 12-hour format with AM/PM
+    const [hours, minutes] = time.split(':');
+    const hour = parseInt(hours);
+    const ampm = hour >= 12 ? 'PM' : 'AM';
+    const hour12 = hour % 12 || 12;
+    const formattedTime = `${hour12}:${minutes} ${ampm}`;
+
+    return `${formattedDate} - ${formattedTime}`;
+  };
+
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await fetch('http://localhost:3001/api/events');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        const response = await fetch('http://localhost:3000/api/events');
+        if (!response.ok) throw new Error('Network response was not ok');
+
         const data = await response.json();
-        // Ensure events is an array
-        setEvents(Array.isArray(data) ? data : []);
+        if (Array.isArray(data.events)) {
+          const transformedEvents = data.events.map((event, index) => ({
+            title: event.title,
+            // Format the date and time
+            time: formatDateTime(event.schedule.date, event.schedule.startTime),
+            images: event.images[0].map(img => {
+              return `${process.env.PUBLIC_URL}/images/Events/${img}`;
+            }),
+            // Set backgroundImage based on index (odd/even)
+            backgroundImage: index % 2 === 0 
+              ? `${process.env.PUBLIC_URL}/images/icon/Dash-Board/pic-event/slide1.svg` 
+              : `${process.env.PUBLIC_URL}/images/icon/Dash-Board/pic-event/slide2.svg`,
+          }));
+          setEvents(transformedEvents);
+        } else {
+          throw new Error('Expected an array of events');
+        }
       } catch (error) {
-        setError('Error fetching events');
+        setError(`Error fetching events: ${error.message}`);
       } finally {
         setLoading(false);
       }
@@ -32,48 +62,34 @@ function Dashboard() {
     fetchEvents();
   }, []);
 
+  // Get the six newest events
+  const getNewestEvents = () => {
+    // console.log("Events before sorting:", events);
+    const sortedEvents = events.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+    // console.log("Sorted events:", sortedEvents); 
+    return sortedEvents;
+  };
+  
+  
+
   return (
     <div className="dashboard">
       <AsideMenu />
-
-      <main className="main-content">
-        <header className="header">
-          <Search />
-          <div className="user-actions">
-            <button className="notification-btn">
-              <img src={`${process.env.PUBLIC_URL}/images/icon/notification.svg`} alt='notification' />
-            </button>
-            <div className="avatar">
-              <img src={`${process.env.PUBLIC_URL}/images/icon/notification.svg`} alt='avatar' />
-            </div>
-          </div>
-        </header>
-        
-        <section className="welcome-section">
-          <h1>Welcome, Danh</h1>
-          <Point />
-        </section>
-
-        <section className="schedule-section">
-          <div className="section-header">
-            <h2>Your schedule</h2>
-            <button className="view-more-btn">View more</button>
-          </div>
-          <div className="schedule-grid">
-            {loading && <p>Loading events...</p>}
-            {error && <p>{error}</p>}
-            {!loading && !error && events.length === 0 && <p>No events found.</p>}
-            {events.length > 0 && (
-              <>
-                <Calendar events={events} />
-                <Schedule events={events} />
-              </>
-            )}
-          </div>
-        </section>
-
-        <ChallengeSection />
-      </main>
+      <div className="main-content">
+        <HeaderDB />
+        <div className="challenge-grid">
+          {loading ? (
+            <div>Loading events...</div>
+          ) : error ? (
+            <div>{error}</div>
+          ) : events.length > 0 ? (
+            <SlideImage event={getNewestEvents()} />
+          ) : (
+            <div className="no-events">No events available at this time</div>
+          )}
+        </div>
+      <FilterBar/>
+      </div>
     </div>
   );
 }

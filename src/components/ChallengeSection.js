@@ -1,5 +1,5 @@
 import React from 'react'
-
+import '../styles/challengeSection.css'
 function ChallengeSection(){
     return (
         <section className="challenge-section">
