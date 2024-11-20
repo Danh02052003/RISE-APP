@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect } from 'react';
-import '../styles/Career-Guidance.css';
-import Header from '../components/HeaderCGL';
-import Main from '../components/MainCGL';
-import Footer from '../components/FooterCGL';
-import PopularChallenges from '../components/PopularChallenges';
-import FooterHome from '../components/FooterHome';
+import React, { useRef, useState, useEffect } from "react";
+import "../styles/Career-Guidance.css";
+import Header from "../components/HeaderCGL";
+import Main from "../components/MainCGL";
+import Footer from "../components/FooterCGL";
+import PopularChallenges from "../components/PopularChallenges";
+import FooterHome from "../components/FooterHome";
 
 const HomePage = () => {
   const gearBoxRef = useRef(null);
@@ -16,12 +16,12 @@ const HomePage = () => {
       if (window.scrollY > 80) setAnimated(true);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div ref={gearBoxRef} className={`container ${animated ? 'animated' : ''}`}>
+    <div ref={gearBoxRef} className={`container ${animated ? "animated" : ""}`}>
       <Header />
       <Main />
       <Footer />

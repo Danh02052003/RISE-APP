@@ -1,12 +1,13 @@
-/* FilterButtons.css */
 .filter-container {
     height: 88px;
-    width: 612px;
+    width: fit-content;
     background-color: #f8f9fa;
     border-radius: 100px;
-
     align-items: center;
     justify-items: center;
+    padding: 12px;
+    margin-top: 44px;
+    margin-left: 250px;
   }
   
   .filter-group {
@@ -26,6 +27,7 @@
     padding: 12px 24px;
     background-color: #EFF0F6;
     border: none;
+    gap: 12px;
     border-radius: 40px;
     color: #1C1C1C;
     font-size: 14px;
