@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import "../styles/Career-Guidance.css";
-import Header from "../components/HeaderCGL";
-import Main from "../components/MainCGL";
-import Footer from "../components/FooterCGL";
-import PopularChallenges from "../components/PopularChallenges";
-import FooterHome from "../components/FooterHome";
+import Header from "../components/LandingPage/HeaderCGL";
+import Main from "../components/LandingPage/MainCGL";
+import Footer from "../components/LandingPage/FooterCGL";
+import PopularChallenges from "../components/LandingPage/PopularChallenges";
+import FooterHome from "../components/LandingPage/FooterHome";
 
 const HomePage = () => {
   const gearBoxRef = useRef(null);
@@ -21,7 +21,10 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div ref={gearBoxRef} className={`container ${animated ? "animated" : ""}`}>
+    <div
+      ref={gearBoxRef}
+      className={`container ${animated ? "animated" : ""} min-w-full`}
+    >
       <Header />
       <Main />
       <Footer />

@@ -1,225 +1,204 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-// Function to generate custom event ID
+// Function to generate a custom event ID
 function generateEventId() {
-    const randomNum = Math.floor(100000 + Math.random() * 900000);
-    const year = new Date().getFullYear();
-    return `EVENT-${year}-${randomNum}`;
+  const randomNum = Math.floor(100000 + Math.random() * 900000);
+  const year = new Date().getFullYear();
+  return `EVENT-${year}-${randomNum}`;
 }
 
-const addressSchema = new Schema({
-    street: {
-        type: String,
-        required: true
-    },
-    ward: {
-        type: String,
-        required: true
-    },
-    district: {
-        type: String,
-        required: true
-    },
-    city: {
-        type: String,
-        required: true
-    },
-    coordinates: {
-        latitude: Number,
-        longitude: Number
-    }
-});
-
-const organizerSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    logo: {
-        type: String,
-        required: true
-    },
-    followers: {
-        type: Number,
-        default: 0
-    },
-    attendeesHosted: {
-        type: Number,
-        default: 0
-    },
-    socialMedia: {
-        facebook: String,
-        instagram: String,
-        linkedin: String
-    }
-});
-
-const skillSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    description: {
-        type: String,
-        required: true
-    },
-    icon: {
-        type: String
-    }
-});
-
-const pricingSchema = new Schema({
-    basePrice: {
-        type: Number,
-        required: true
-    },
-    currency: {
-        type: String,
-        default: 'd'  // Vietnamese dong
-    },
-    discount: {
-        amount: Number,
-        type: {
-            type: String,
-            enum: ['percentage', 'fixed']
-        },
-        validUntil: Date
-    },
-    finalPrice: {
-        type: Number,
-        required: true
-    }
-});
-
-const eventSchema = new Schema({
+const eventSchema = new Schema(
+  {
     eventId: {
-        type: String,
-        unique: true,
-        default: generateEventId,
-        required: true,
-        index: true
+      type: String,
+      unique: true,
+      default: generateEventId,
+      required: true,
+      index: true,
     },
     title: {
-        type: String,
-        required: true,
-        index: true
+      type: String,
+      required: true,
+      index: true,
+      minlength: 5, // Ensures meaningful titles
     },
     description: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
+      minlength: 20, // Ensures sufficient detail
     },
     registrations: {
-        current: {
-            type: Number,
-            default: 0
-        },
-        limit: {
-            type: Number
-        }
+      current: {
+        type: Number,
+        default: 0,
+        min: 0,
+      },
+      limit: {
+        type: Number,
+        min: 1,
+      },
     },
     organizer: {
-        type: organizerSchema,
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Organizer", // Ensure the string 'Organizer' matches the model name exactly
+      required: true,
     },
     pricing: {
-        type: pricingSchema,
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Pricing",
+      required: true,
     },
-    categories: [{
+    categories: [
+      {
         type: String,
         required: true,
-    }],
+      },
+    ],
     schedule: {
-        date: {
-            type: Date,
-            required: true
+      date: {
+        type: Date,
+        required: true,
+        validate: {
+          validator: (value) => value > Date.now(),
+          message: "Event date must be in the future.",
         },
-        startTime: {
-            type: String,
-            required: true
-        },
-        endTime: {
-            type: String,
-            required: true
-        },
-        timezone: {
-            type: String,
-            default: 'CST'
-        }
+      },
+      startTime: {
+        type: String,
+        required: true,
+      },
+      endTime: {
+        type: String,
+        required: true,
+      },
+      timezone: {
+        type: String,
+        default: "CST",
+      },
     },
     location: {
-        name: {
-            type: String,
-            required: true
-        },
-        address: {
-            type: addressSchema,
-            required: true
-        }
+      name: {
+        type: String,
+        required: true,
+      },
+      address: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Address",
+        required: true,
+      },
     },
     skills: {
-        type: [skillSchema],
-        default: []
+      type: [mongoose.Schema.Types.ObjectId],
+      ref: "Skill",
+      default: [],
     },
     refundPolicy: {
-        type: String,
-        default: 'No policy'
+      type: String,
+      default: "No policy",
     },
-    images: [{
+    images: [
+      {
         type: [String],
-        required: true
-    }],
-    tags: [{
+        required: true,
+      },
+    ],
+    tags: [
+      {
         type: String,
-        index: true
-    }],
+        index: true,
+        lowercase: true, // Normalizes tags
+        trim: true,
+      },
+    ],
     status: {
-        type: String,
-        default: 'Just Added'
+      type: String,
+      default: "Just Added",
+      enum: [
+        "Just Added",
+        "Upcoming",
+        "Ongoing",
+        "Completed",
+        "Cancelled",
+        "Ticket sales",
+      ],
     },
     ticketSalesEnd: {
-        type: Date,
-        required: true
-    }
-}, {
-    timestamps: true
-});
+      type: Date,
+      required: true,
+      validate: {
+        validator: function (value) {
+          return value > Date.now();
+        },
+        message: "Ticket sales end date must be in the future.",
+      },
+    },
+    interactionData: {
+      views: {
+        type: Number,
+        default: 0,
+        min: 0,
+      },
+      clicks: {
+        type: Number,
+        default: 0,
+        min: 0,
+      },
+      averageViewDuration: {
+        type: Number, // In seconds
+        default: 0,
+        min: 0,
+      },
+      conversionRate: {
+        type: Number, // Percentage
+        default: 0,
+        min: 0,
+        max: 100,
+      },
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 // Add text index for search
 eventSchema.index({
-    eventId: 'text',
-    title: 'text',
-    description: 'text',
-    'location.name': 'text',
-    'location.address.street': 'text',
-    tags: 'text',
-    categories: 'text'
+  eventId: "text",
+  title: "text",
+  description: "text",
+  "location.name": "text",
+  "location.address.street": "text",
+  tags: "text",
+  categories: "text",
 });
 
-eventSchema.pre('save', async function(next) {
-    if (this.isNew) {
-        let isUnique = false;
-        let attempts = 0;
-        
-        while (!isUnique && attempts < 5) {
-            const eventId = generateEventId();
-            const existingEvent = await mongoose.models.Event.findOne({ eventId });
-            
-            if (!existingEvent) {
-                this.eventId = eventId;
-                isUnique = true;
-            }
-            
-            attempts++;
-        }
-        
-        if (!isUnique) {
-            next(new Error('Unable to generate unique event ID'));
-        }
+// Pre-save hook to ensure unique event ID
+eventSchema.pre("save", async function (next) {
+  if (this.isNew) {
+    let isUnique = false;
+    let attempts = 0;
+
+    while (!isUnique && attempts < 5) {
+      const eventId = generateEventId();
+      const existingEvent = await mongoose.models.Event.findOne({ eventId });
+
+      if (!existingEvent) {
+        this.eventId = eventId;
+        isUnique = true;
+      }
+
+      attempts++;
     }
-    next();
+
+    if (!isUnique) {
+      return next(
+        new Error("Unable to generate unique event ID after 5 attempts")
+      );
+    }
+  }
+  next();
 });
 
-const Event = mongoose.model('Event', eventSchema);
+const Event = mongoose.model("Event", eventSchema);
 module.exports = Event;

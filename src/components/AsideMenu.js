@@ -1,14 +1,13 @@
 import React from "react";
 import "../styles/asideMenu.css";
+//import images
+import logo from "../Assets/icon/logo/logo.svg";
 export default function AsideMenu() {
   return (
     <div>
       <aside className="sidebar">
         <div className="logo">
-          <img
-            src={`${process.env.PUBLIC_URL}/images/logo/logo.svg`}
-            alt="logo-orange"
-          />
+          <img src={logo} alt="logo-orange" />
         </div>
         <nav>
           <div className="nav-buttons">

@@ -8,7 +8,6 @@ body {
   .container {
     background-color: #F3FDB0;
     min-height: 100vh;
-    width: 100%;
     display: flex;
     flex-direction: column;
   }
@@ -95,13 +94,6 @@ body {
     font-size: 72px;
     margin: 0;
   }
-
-  .description {    
-    text-align: center;
-    font-size: 24px;
-    margin: 16px 0 ;
-  }
-
   
   .explore-button {
     position: absolute;
@@ -137,21 +129,12 @@ body {
     overflow: hidden;
     width: 100%;
   }
-  .gear-box {
-    position: relative;
-    width: 100%;
-    height: 600px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    margin-bottom: 118px;
-  }
   
   .gear-box .boy,
   .gear-box .girl {
     position: absolute;
     z-index: 2;
+    bottom: 20px;
     transition: transform 0.5s ease-out;
   }
   
@@ -159,7 +142,6 @@ body {
     width: 231.16px;
     height: 572.8px;
     left: 0%; 
-    bottom: 20px;
     transform: translateX(-100%);
     z-index: 0;
   }
@@ -168,7 +150,6 @@ body {
     width: 337.86px;
     height: 585.61px;
     right: 0%; 
-    bottom: 20px;
     transform: translateX(100%);
     z-index: 0;
   }
@@ -198,16 +179,7 @@ body {
 
 /* grey circle */
   .grey-circle {
-    position: relative;
-    width: 120%;
-    height: 1150px; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #D7DCFC;
-    border-radius: 100% 100% 0 0; 
-    overflow: hidden;
-    margin: 0;
+    border-radius: 80% 80% 0 0; 
 }
 
 
@@ -263,12 +235,7 @@ body {
   .text-star{
     margin-top: 0px;
   }
-  .hello-dog {
-    margin-top: 600px;
-    display: block;
-    width: 500px;
-    height: 600px;
-  }
+
 
   /* animation */
   .bot-right {
@@ -297,31 +264,6 @@ body {
   footer {
     background-color: #304FC9;
     color: white;
-    display: flex;
-  }
-
-  .blue-area{
-    margin: 0px
-  }
-  .blue-area h3{
-    font-size: 64px;
-    margin-left: 96px;
-    margin-top: 55px;
-    margin-bottom: 0px;
-  }
-
-  .description-app{
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 42.56px;
-    margin-left: 96px;
-    margin-top: 13px;
-    margin-bottom: 98px;
-    width: 667px;
-  }
- 
-  .app-buttons {
-    margin-left: 96px;
     display: flex;
   }
   

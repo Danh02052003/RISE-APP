@@ -1,11 +1,10 @@
 .challenge-card {
     position: relative;
     background-color: #ffffff;
-    width: 344px;
-    height: 321px;
+    width: 360px;
+    height: 332px;
     border-radius: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
@@ -14,12 +13,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Add a stronger shadow */
   }
   .challenge-image{
-    width: 343px;
     height: 160px;
-    gap: 0px;
+    width: 100%;
+    object-fit: cover;    
     border-radius: 24px 24px 0px 0px;
-    top: 0;
-    left: 0;
     opacity: 1;
     transition: opacity 0.5s ease, transform 0.5s ease;
   }
@@ -51,7 +48,7 @@
 
   .challenge-card:hover .challenge-title,
   .challenge-card:hover .challenge-cost {
-    color: #304fc9; /* Highlight on hover */
+    color: #304fc9;
   }
   .challenge-favorite{
     width: 32px;
@@ -91,83 +88,7 @@
     margin-bottom: 9.5px;
   }
 
-  .challenge-status {
-    display: flex;
-    margin-left: 10px;
-  }
-  
-  .status {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 18px;
-    padding: 2px 16px;
-    border-radius: 40px;
-    border: 0.5px solid;
-    margin-right: 8px;
-    text-align: left;
-    display: inline-block;
-  }
 
-  .category{
-    color: #304FC9;
-    border-color: #304FC9;
-  }
-  
-  .status.almost-full {
-    color: #F31559;
-    border-color: #F31559;
-    background-color: rgba(243, 21, 89, 0.1);
-  }
-  
-  .status.just-added {
-    color: #06B400;
-    border-color: #06B400;
-    background-color: rgba(6, 180, 0, 0.1);
-  }
-  
-  .status.sale-soon {
-    color: #622EFF1A;
-    border-color: #622EFF1A;
-    background-color: rgba(98, 46, 255, 0.1);
-  }
-
-  .challenge-header {
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    margin-left: 16px; 
-  }
-  
-  .challenge-title {
-    width: 312px;
-    height: fit-content;
-    color: #1C1C1C;
-    font-weight: bold;
-    font-weight: 600px;
-    font-size: 18px;
-    margin-top: 16px;
-  }
-  
-  .challenge-location{
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18.62px;
-    text-align: left;
-    color: #747474;
-    margin-top: 6px;
-
-  }
-
-  .challenge-cost{
-    color: #1C1C1C;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 23.94px;
-    text-align: left;
-    position: absolute;
-    bottom: 16px;
-    margin-left: 16px;
-  }
   .card-in-challenge{
     line-height: 31.92px;
     text-align: center;

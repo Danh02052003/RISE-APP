@@ -1,24 +1,3 @@
-.filter-container {
-    height: 88px;
-    width: fit-content;
-    background-color: #f8f9fa;
-    border-radius: 100px;
-    align-items: center;
-    justify-items: center;
-    padding: 12px;
-    margin-top: 44px;
-    margin-left: 250px;
-  }
-  
-  .filter-group {
-    height: 72px;
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  
   .filter-button {
     height: 48px;
     width: fit-content;
@@ -52,22 +31,6 @@
   .dropdown-button {
     position: relative;
     padding-right: 24px;
-  }
-  
-  .plus-icon {
-    width: 20px;
-    height: 20px;
-    stroke: currentColor;
-    stroke-width: 2;
-    fill: none;
-  }
-  
-  .chevron-icon {
-    width: 16px;
-    height: 16px;
-    stroke: currentColor;
-    stroke-width: 2;
-    fill: none;
   }
   
   .path{

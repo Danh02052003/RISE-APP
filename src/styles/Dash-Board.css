@@ -1,6 +1,5 @@
   .dashboard {
     display: flex;
-    height: 100vh;
     background-color: hsl(231, 28%, 95%);
   }
   .header {
