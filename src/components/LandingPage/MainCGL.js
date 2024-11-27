@@ -80,7 +80,7 @@ const Main = () => {
           <div className="white-area">
             <img
               className="gif"
-              src="https://shorturl.at/jcuCd"
+              src="https://s3-alpha-sig.figma.com/img/f368/9432/6be7df4263005c600f71d458531dc24f?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=X18JOKz2fw6vdvGBO7dnQ7RljlKTWBJxSKLimAdnUQztR0tjx82WlSl3QMmlz8HkU3u~IBAO8ZuUI9O1EZD-nHOlnuUSnbhFRn13B3ck4bqQRabXze5cXLVUNlULWprKoT6-X4Gh3kmXbz1Ny7n8R~3gcuz7lHp0rvoGNgnXaYdVovRKdIqrTo8UAnTuec~n9T98k9GKEXDaSMHhIZCgi5pJtnmEF8oMQi4r7w8D1fEEqyXTt5ZKRq9wUGPWEsGFHqEpxTCY2norsxBnZC~3iON1WS8QFWn4huFxkCcu03AT1M4klwHVjkME-gZ3GWJ63cE3r-ejle1Cgyw1hhmOTA__"
               alt="flying coin"
             />
           </div>
@@ -92,7 +92,7 @@ const Main = () => {
           <div className="white-area">
             <img
               className="gif"
-              src="https://shorturl.at/t5zaz"
+              src="https://s3-alpha-sig.figma.com/img/0c47/6c14/1c164c9c45728dfdc8cd6d85a4f705cf?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=pieeagzz3WgymtGyXvOlUaD8NVe1koPlc4jmNBdv3ZjTv2-b6JaaZekOQDAZQANzUojDQtms5Ixz1lyeua7pKxnuPPD4E1kKjZxKY3GYYDdQ7naMHbrRkllZLPjJMG~TGiPjbXcAuuKe-lxXZ6WJRqtrGpRHAA-BSCmG~h7vnu2I-i8I9LsLJY4b9DsksKMU~VDdnZyNNIIUeUSaYPBAP8GdIwDygPb~E5aWmFqs7jywtf1wKnRXUjvCsM69TwZY8kN52KMLZifFM-2lzMUVjWXn-gphRVWNv4DTsK14n-0XqGvx0PIrn8tkz69-lc0DfWBl248T0oImSZ2TzuUFtQ__"
               alt="running toy"
             />
           </div>
@@ -104,7 +104,7 @@ const Main = () => {
           <div className="white-area">
             <img
               className="gif"
-              src="https://shorturl.at/5gq69"
+              src="https://s3-alpha-sig.figma.com/img/2cd3/bcf3/9303e1ab209a8202b37dd7b08e6d6416?Expires=1733702400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=avlWREZCPM~ZKS~kf~tAsaxDe7FTmfc31IjFdaT5bIpnH65o0W844vs9UUbbwVmdthdgz8NCxpY23GbSzrPXJzxIZb5bvu9ttbsT3cBaGymydgKmHA0mmLKt0MsdiIvXEzK4KqVgdJHUMXNXu6-amGGZujHZwxK98~B4Z7iuuQZ~xOypG-SITWYa828G~7uzZro1nV2~tlBeveUyyc33vvNVnGgJ78WhhUwYX7yudZogBMmaARkA39KfiYUr1372UP-beIxbgbsG8XUqnYtos3bt2jWI6QbqUf8~JRhit9bFhUQae0sSJPAKCMm9a9MBOCg~-UQc1ocIlOdXzqKjdw__"
               alt="jumping gift"
             />
           </div>

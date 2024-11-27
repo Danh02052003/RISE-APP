@@ -9,8 +9,6 @@ import scroll from "../../utils/ScrollRL";
 
 import "../../styles/buttonArrow.css";
 const IntroduceEvent = ({ events }) => {
-  // console.log("introduce" + events);
-
   const {
     scrollContainerRef,
     isDragging,
